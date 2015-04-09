@@ -4,7 +4,7 @@
 #PBS -m abe
 #PBS -V
 #PBS -N fitting_test
-#PBS -l nodes=1:ppn=10,mem=20GB,walltime=30:00:00
+#PBS -l nodes=1:ppn=10,mem=20GB,walltime=15:00:00
 
 module purge
 module load centos/bin
@@ -20,7 +20,7 @@ export MATLAB_PREFDIR=$PBS_JOBTMP/$$
 rm -rf $MATLAB_PREFDIR
 mkdir -p $MATLAB_PREFDIR
 
-xvfb-run --server-args="-screen 0 1024x768x24" matlab -nodisplay -r "gk_hpc_conf; loop_fitbrdf(10); exit;" > output.log 2>&1
+xvfb-run --server-args="-screen 0 1024x768x24" matlab -nodisplay -r "gk_hpc_conf; loop_fitbrdf(5); exit;" > output.log 2>&1
 
 rm -rf $MATLAB_PREFDIR
 
